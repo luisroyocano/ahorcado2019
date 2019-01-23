@@ -284,9 +284,15 @@ public class VentanaAhorcado extends javax.swing.JFrame {
         });
 
         jButton29.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jButton29.setText("tyu");
         jButton29.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 jButton29MousePressed(evt);
+            }
+        });
+        jButton29.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton29ActionPerformed(evt);
             }
         });
 
@@ -536,6 +542,10 @@ public class VentanaAhorcado extends javax.swing.JFrame {
     private void jButton30MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton30MousePressed
         chequeaBoton ( (JButton) evt.getSource() );
     }//GEN-LAST:event_jButton30MousePressed
+
+    private void jButton29ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton29ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton29ActionPerformed
 
     /**
      * @param args the command line arguments
