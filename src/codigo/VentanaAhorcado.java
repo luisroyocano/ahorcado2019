@@ -5,6 +5,8 @@
  */
 package codigo;
 
+import java.awt.Image;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 /**
@@ -28,6 +30,7 @@ public class VentanaAhorcado extends javax.swing.JFrame {
             aux += "_ ";//aux = aux + "_ "
         }
         display.setText(aux);
+        dibujaImagen(0);
     }
 
     
@@ -43,16 +46,46 @@ public class VentanaAhorcado extends javax.swing.JFrame {
      
      //comparo la letra que ha sido pulsada con las letras
      //de la palabra
+     char letraPulsada = letra.charAt(0);
+     boolean acierto = false;
      for(int i=0; i < palabraOculta.length(); i++){
          if(palabraOculta.charAt(i) == letra.charAt(0)){
             palabraConGuiones = 
                     palabraConGuiones.substring(0, 2*i)//el trozo de la izquierda
                     + letra//centro
                     + palabraConGuiones.substring(2*i+1);//el trozo de la derecha
+            acierto = true;
          }
      }
      //actualizo el display para que muestre las letras acertadas
      display.setText(palabraConGuiones);
+     //si acierto es false es porque la letra pulsada no estaba en la palabra oculta
+     if(!acierto){
+         numeroDeFallos++;
+         dibujaImagen(numeroDeFallos);
+     }
+     
+     //si el if se cumple es porque ya no hay guiones en el display
+     if(!palabraConGuiones.contains("_")){
+         dibujaImagen(-1);
+     }
+  }
+  
+  private void dibujaImagen(int numeroFallos){
+      String nombreImagen="";
+      switch(numeroFallos){
+          case 0 : nombreImagen = "/imagenes/ahorcado_0.png"; break;
+          case 1 : nombreImagen = "/imagenes/ahorcado_1.png"; break;
+          case 2 : nombreImagen = "/imagenes/ahorcado_2.png"; break;
+          case 3 : nombreImagen = "/imagenes/ahorcado_3.png"; break;
+          case 4 : nombreImagen = "/imagenes/ahorcado_4.png"; break;
+          case 5 : nombreImagen = "/imagenes/ahorcado_5.png"; break;
+          case -1 : nombreImagen = "/imagenes/acertasteTodo.png"; break;
+          default  : nombreImagen = "/imagenes/ahorcado_fin.png"; break;
+      }
+      ImageIcon miImagen = new ImageIcon(new ImageIcon(getClass().getResource(nombreImagen)).getImage().
+              getScaledInstance(visorImagen.getWidth(), visorImagen.getHeight(), Image.SCALE_DEFAULT));
+      visorImagen.setIcon(miImagen);
   }
     
     
